@@ -53,7 +53,7 @@
                             <td><?php if($bc->getdocument() === null){?>
                                     <p >BC N°: <?= $bc->getBc()?></p>
                                 <?php }else{ ?>
-                                    <a  href="<?= $viewData['pdfBaseUri'] . $bc->getDocument(); ?>" download>BC N°: <?= $bc->getBc(); ?> </a>
+                                    <a class="text-dark" href="<?= $viewData['pdfBaseUri'] . $bc->getDocument(); ?>" download>BC N°: <?= $bc->getBc(); ?> </a>
                                 <?php } ?>
                             </td>
                             <td><?= (!empty($bc->getRdv())) ? (new DateTime($bc->getRdv()))->format('d/m/y') : "" ?></td>

@@ -67,7 +67,7 @@
                             <td><?php if($bt->getdocument() === null){?>
                                     <p> BT N°: <?= $bt->getbt()?></p>
                                 <?php }else{ ?>
-                                    <a href="<?=$viewData['pdfBaseUri'] . $bt->getDocument(); ?>" download>BT N°: <?= $bt->getBt(); ?> </a>
+                                    <a class="text-dark" href="<?=$viewData['pdfBaseUri'] . $bt->getDocument(); ?>" download>BT N°: <?= $bt->getBt(); ?> </a>
                                 <?php } ?>
                             </td>
                             <td><?= (!empty($bt->getRdv())) ? (new DateTime($bt->getRdv()))->format('d/m/y') : "" ?></td>
@@ -105,7 +105,7 @@
                                     <td><?php if($bt->getdocument() === null){?>
                                         <p>BT N°: <?= $bt->getbt()?></p>
                                         <?php }else{ ?>
-                                        <a href="<?= $viewData['pdfBaseUri'] . $bt->getDocument(); ?>" download>BT N°: <?= $bt->getBt(); ?> </a>
+                                        <a class="text-dark" href="<?= $viewData['pdfBaseUri'] . $bt->getDocument(); ?>" download>BT N°: <?= $bt->getBt(); ?> </a>
                                         <?php } ?>
                                     </td>
                                     <td><?= (!empty($bt->getRdv())) ? (new DateTime($bt->getRdv()))->format('d/m/y') : "" ?></td>
