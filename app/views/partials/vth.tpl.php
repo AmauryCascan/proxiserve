@@ -67,7 +67,7 @@
                             <td><?php if($bt->getdocument() === null){?>
                                     <p> BT N°: <?= $bt->getbt()?></p>
                                 <?php }else{ ?>
-                                    <a class =<?= ($bt->getEtat() === "Facturé") ? "text-light" : "text-dark" ?> href="<?=$viewData['pdfBaseUri'] . $bt->getDocument(); ?>" download>BT N°: <?= $bt->getBt(); ?> </a>
+                                    <a href="<?=$viewData['pdfBaseUri'] . $bt->getDocument(); ?>" download>BT N°: <?= $bt->getBt(); ?> </a>
                                 <?php } ?>
                             </td>
                             <td><?= (!empty($bt->getRdv())) ? (new DateTime($bt->getRdv()))->format('d/m/y') : "" ?></td>
@@ -103,9 +103,9 @@
                                         class="" 
                                     <?php } ?>>
                                     <td><?php if($bt->getdocument() === null){?>
-                                        <p class =<?= ($bt->getEtat() === "Facturé") ? "text-light" : "text-dark" ?>>BT N°: <?= $bt->getbt()?></p>
+                                        <p>BT N°: <?= $bt->getbt()?></p>
                                         <?php }else{ ?>
-                                        <a class =<?= ($bt->getEtat() === "Facturé") ? "text-light" : "text-dark" ?> href="<?= $viewData['pdfBaseUri'] . $bt->getDocument(); ?>" download>BT N°: <?= $bt->getBt(); ?> </a>
+                                        <a href="<?= $viewData['pdfBaseUri'] . $bt->getDocument(); ?>" download>BT N°: <?= $bt->getBt(); ?> </a>
                                         <?php } ?>
                                     </td>
                                     <td><?= (!empty($bt->getRdv())) ? (new DateTime($bt->getRdv()))->format('d/m/y') : "" ?></td>
