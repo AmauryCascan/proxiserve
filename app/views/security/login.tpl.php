@@ -1,4 +1,4 @@
-<div class="container my-4 col-2 border border-4 rounded p-4 bg-light">
+<div class="container my-4 col-8 col-lg-2 border border-4 rounded p-4 bg-light">
     <h2>Connexion</h2>
 
     <form action="" method="POST" class="mt-5">
