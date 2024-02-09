@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-expand-lg ">
-    <div class="container-fluid  position-relative">
+    <div class="container-fluid bg-light  position-relative">
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <!-- avec le if ci-dessous, on vérifie si l'utilisateur est connecté ou pas ! -->
                 <?php if(isset($_SESSION['userObject']) && $_SESSION['userObject']->getStatus() === 1) :?>
