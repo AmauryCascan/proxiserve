@@ -64,10 +64,10 @@
                                     <?php } else { ?>
                                         class="" 
                                     <?php } ?>>
-                            <td><?php if($bt->getdocument() === "http://localhost/Marie%20Pereira/public/doc/bon_travaux/"){?>
+                            <td><?php if($bt->getdocument() === null){?>
                                     <p> BT N°: <?= $bt->getbt()?></p>
                                 <?php }else{ ?>
-                                    <a class =<?= ($bt->getEtat() === "Facturé") ? "text-light" : "text-dark" ?> href="<?= $bt->getDocument(); ?>" download>BT N°: <?= $bt->getBt(); ?> </a>
+                                    <a class =<?= ($bt->getEtat() === "Facturé") ? "text-light" : "text-dark" ?> href="<?=$viewData['pdfBaseUri'] . $bt->getDocument(); ?>" download>BT N°: <?= $bt->getBt(); ?> </a>
                                 <?php } ?>
                             </td>
                             <td><?= (!empty($bt->getRdv())) ? (new DateTime($bt->getRdv()))->format('d/m/y') : "" ?></td>
@@ -102,10 +102,10 @@
                                     <?php } else { ?>
                                         class="" 
                                     <?php } ?>>
-                                    <td><?php if($bt->getdocument() === "http://localhost/Marie%20Pereira/public/doc/bon_travaux/"){?>
+                                    <td><?php if($bt->getdocument() === null){?>
                                         <p class =<?= ($bt->getEtat() === "Facturé") ? "text-light" : "text-dark" ?>>BT N°: <?= $bt->getbt()?></p>
                                         <?php }else{ ?>
-                                        <a class =<?= ($bt->getEtat() === "Facturé") ? "text-light" : "text-dark" ?> href="<?= $bt->getDocument(); ?>" download>BT N°: <?= $bt->getBt(); ?> </a>
+                                        <a class =<?= ($bt->getEtat() === "Facturé") ? "text-light" : "text-dark" ?> href="<?= $viewData['pdfBaseUri'] . $bt->getDocument(); ?>" download>BT N°: <?= $bt->getBt(); ?> </a>
                                         <?php } ?>
                                     </td>
                                     <td><?= (!empty($bt->getRdv())) ? (new DateTime($bt->getRdv()))->format('d/m/y') : "" ?></td>

@@ -232,7 +232,7 @@ class VthController extends CoreController
         $end = filter_input(INPUT_POST, 'end');
         $person = filter_input(INPUT_POST, 'person');
         $etat = filter_input(INPUT_POST, 'etat');
-        $document ="http://localhost/Marie%20Pereira/public/doc/bon_travaux/" . $fileName;
+        $document = $fileName;
         $price = filter_input(INPUT_POST, 'price');
         $rdv = filter_input(INPUT_POST, 'rdv');
         $commande = filter_input(INPUT_POST, 'commande');
@@ -256,10 +256,11 @@ class VthController extends CoreController
         ($end !== "") ? $bt->setEnd($end) : NULL;
         ($person !== "") ? $bt->setPerson($person) : NULL;
         $bt->setEtat($etat);
-        $bt->setDocument($document);
+        ($document !== "") ? $bt->setDocument($document) : NULL;
         ($price !== "") ? $bt->setPrice($price) : NULL;
         ($rdv !== "") ? $bt->setRdv($rdv) : NULL;
         ($commande !== "") ? $bt->setCommande($commande) : NULL;
+        
         $bt->insert();
 
         header('Location: ' . $this->router->generate('vth-list'));
@@ -284,7 +285,7 @@ class VthController extends CoreController
         $end = filter_input(INPUT_POST, 'end');
         $person = filter_input(INPUT_POST, 'person');
         $etat = filter_input(INPUT_POST, 'etat');
-        $document ="http://localhost/Marie%20Pereira/public/doc/bon_travaux/" . $fileName;
+        $document = $fileName;
         $price = filter_input(INPUT_POST, 'price');
         $rdv = filter_input(INPUT_POST, 'rdv');
         $commande = filter_input(INPUT_POST, 'commande');
@@ -307,7 +308,7 @@ class VthController extends CoreController
         ($person !== "") ? $bt->setPerson($person) : NULL;
         $bt->setEtat($etat);
         if(!empty($fileName)){
-        $bt->setDocument($document);
+        ($document !== "") ? $bt->setDocument($document) : NULL;
         }
         ($price !== "") ? $bt->setPrice($price) : NULL;
         ($rdv !== "") ? $bt->setRdv($rdv) : NULL;

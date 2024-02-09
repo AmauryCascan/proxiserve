@@ -184,7 +184,7 @@ class TlController extends CoreController
         $price = filter_input(INPUT_POST, 'price');
         $etat = filter_input(INPUT_POST, 'etat');
         $rdv = filter_input(INPUT_POST, 'rdv');
-        $document ="http://localhost/Marie%20Pereira/public/doc/bon_travaux/" . $fileName;
+        $document = $fileName;
         $commande = filter_input(INPUT_POST, 'commande');
 
         if(is_null($years) || is_null($boncommande) || is_null($date) || is_null($type) || is_null($price) || is_null($etat)
@@ -205,7 +205,7 @@ class TlController extends CoreController
         ($price !== "") ? $bc->setPrice($price) : NULL;
         $bc->setEtat($etat);
         ($rdv !== "") ? $bc->setRdv($rdv) : NULL;
-        $bc->setDocument($document);
+        ($document !== "") ? $bc->setDocument($document) : NULL;
         ($commande !== "") ? $bc->setCommande($commande) : NULL;
         $bc->insert();
         header('Location: ' . $this->router->generate('tl-list'));
@@ -229,7 +229,7 @@ class TlController extends CoreController
         $price = filter_input(INPUT_POST, 'price');
         $etat = filter_input(INPUT_POST, 'etat');
         $rdv = filter_input(INPUT_POST, 'rdv');
-        $document ="http://localhost/Marie%20Pereira/public/doc/bon_travaux/" . $fileName;
+        $document = $fileName;
         $commande = filter_input(INPUT_POST, 'commande');
 
         if(is_null($years) || is_null($boncommande) || is_null($date) || is_null($type) || is_null($price) || is_null($etat)
@@ -249,7 +249,7 @@ class TlController extends CoreController
         $bc->setEtat($etat);
         ($rdv !== "") ? $bc->setRdv($rdv) : NULL;
         if(!empty($fileName)){
-            $bc->setDocument($document);
+            ($document !== "") ? $bc->setDocument($document) : NULL;
         }
         ($commande !== "") ? $bc->setCommande($commande) : NULL;
 

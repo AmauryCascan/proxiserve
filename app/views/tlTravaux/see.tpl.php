@@ -13,7 +13,7 @@
                  <?php }else { ?>   
                     <a href="<?= $this->router->generate('tl-list')?>" class="btn btn-outline-primary">Retour</a> 
                 <?php } ?>
-                <img class="vth d-inline" src="http://localhost/Marie%20Pereira/public/images/touraine-logement.png" alt=""> 
+                <img class="vth d-inline" src="<?= $viewData['imagesBaseUri']?>touraine-logement.png" alt=""> 
             </div>
             <div class="p-2 border rounded col-1 m-2">
                 <h6 class="display-8">Année</h6>
@@ -90,10 +90,10 @@
         <!-- Partie droite (PDF) -->
         <div class="col-12 col-md-5">
             <div class="p-2 ">
-                <?php if ($bc->getDocument() === "http://localhost/Marie%20Pereira/public/doc/bon_travaux/") { ?>
+                <?php if ($bc->getDocument() ===  $viewData['pdfBaseUri']) { ?>
                     <h6>Aucun document importé</h6>
                 <?php }else{ ?>
-                    <embed src="<?= $bc->getDocument()?>"  type="application/pdf" width="100%" height="650px">
+                    <embed src="<?=$viewData['pdfBaseUri'] . $bt->getDocument()?>"  type="application/pdf" width="100%" height="650px">
                 <?php } ?>
             </div>
         </div>

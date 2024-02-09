@@ -50,10 +50,10 @@
                                     <?php } else { ?>
                                         class="" 
                                     <?php } ?>>
-                            <td><?php if($bc->getdocument() === "http://localhost/Marie%20Pereira/public/doc/bon_travaux/"){?>
+                            <td><?php if($bc->getdocument() === null){?>
                                     <p class=<?= ($bc->getEtat() === "Facturé") ? "text-light" : "" ?>>BC N°: <?= $bc->getBc()?></p>
                                 <?php }else{ ?>
-                                    <a class =<?= ($bc->getEtat() === "Facturé") ? "text-light" : "text-dark" ?> href="<?= $bc->getDocument(); ?>" download>BC N°: <?= $bc->getBc(); ?> </a>
+                                    <a class =<?= ($bc->getEtat() === "Facturé") ? "text-light" : "text-dark" ?> href="<?= $viewData['pdfBaseUri'] . $bc->getDocument(); ?>" download>BC N°: <?= $bc->getBc(); ?> </a>
                                 <?php } ?>
                             </td>
                             <td><?= (!empty($bc->getRdv())) ? (new DateTime($bc->getRdv()))->format('d/m/y') : "" ?></td>
