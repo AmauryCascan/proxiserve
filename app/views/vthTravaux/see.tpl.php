@@ -131,7 +131,7 @@
                 <?php if ($bt->getDocument() === null ) { ?>
                     <h6>Aucun document importé</h6>
                 <?php }else{ ?>
-                    <embed src=" <?=$viewData['pdfBaseUri'] . $bt->getDocument()?>"  type="application/pdf" width="100%" height="650px">
+                    <embed src=" <?= $viewData['pdfBaseUri'] . $bt->getDocument()?>"  type="application/pdf" width="100%" height="650px">
                 <?php } ?>
             </div>
         </div>
