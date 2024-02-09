@@ -14,7 +14,6 @@
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary mt-5">Se connecter</button>
         </div>
-        <input type="hidden" name="csrftoken" value="<?= $this->generateCSRFToken(); ?>">
     </form>
 
 </div>

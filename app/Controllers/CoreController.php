@@ -72,7 +72,6 @@ class CoreController
         ];
 
         $csrfRoutesToCheck = [
-            'security-loginpost',
             'vth-addpost',
             'vth-updatepost',
             'vth-seepost',
@@ -208,12 +207,13 @@ class CoreController
         // donc on la définit dans show()
         $viewData['currentPage'] = $viewName;
         // définir l'url absolue pour nos assets
-        $viewData['assetsBaseUri'] = $_SERVER['BASE_URI'] . 'assets/';
-        $viewData['imagesBaseUri'] = $_SERVER['BASE_URI'] . 'images/';
-        $viewData['pdfBaseUri'] = $_SERVER['BASE_URI'] . 'doc/bon_travaux/';
+        $viewData['assetsBaseUri'] = $_SERVER['BASE_URI'] . '/assets/';
+        $viewData['imagesBaseUri'] = $_SERVER['BASE_URI'] . '/images/';
+        $viewData['pdfBaseUri'] = $_SERVER['BASE_URI'] . '/doc/bon_travaux/';
         // définir l'url absolue pour la racine du site
         // /!\ != racine projet, ici on parle du répertoire public/
         $viewData['baseUri'] = $_SERVER['BASE_URI'];
+        
         
         // On veut désormais accéder aux données de $viewData, mais sans accéder au tableau
         // La fonction extract permet de créer une variable pour chaque élément du tableau passé en argument
