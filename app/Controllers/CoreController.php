@@ -209,7 +209,7 @@ class CoreController
         // définir l'url absolue pour nos assets
         $viewData['assetsBaseUri'] = $_SERVER['BASE_URI'] . 'assets/';
         $viewData['imagesBaseUri'] = $_SERVER['BASE_URI'] . 'images/';
-        $viewData['pdfBaseUri'] = $_SERVER['BASE_URI'] . '/doc/bon_travaux/';
+        $viewData['pdfBaseUri'] = $_SERVER['BASE_URI'] . 'doc/bon_travaux/';
         
         // définir l'url absolue pour la racine du site
         // /!\ != racine projet, ici on parle du répertoire public/
