@@ -218,12 +218,12 @@ class VthController extends CoreController
 
         $name = $_FILES['document']['tmp_name'];
         $fileName = $_FILES['document']['name'];
-        $uploadDir = "../public/doc/bon_travaux/";
+        $uploadDir = "../public/doc/";
         $destination = $uploadDir . $fileName;
         
 
         move_uploaded_file($name, $destination);
-
+        
         $years = filter_input(INPUT_POST, 'years');
         $bontravaux = filter_input(INPUT_POST, 'bt');
         $type = filter_input(INPUT_POST, 'type');
@@ -275,7 +275,7 @@ class VthController extends CoreController
         $uploadDir = "../public/doc/bon_travaux/";
         $destination = $uploadDir . $fileName;
         move_uploaded_file($name, $destination);
-
+        
 
         $years = filter_input(INPUT_POST, 'years');
         $bontravaux = filter_input(INPUT_POST, 'bt');
