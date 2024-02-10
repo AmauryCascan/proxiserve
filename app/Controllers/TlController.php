@@ -171,7 +171,7 @@ class TlController extends CoreController
 
         $name = $_FILES['document']['tmp_name'];
         $fileName = $_FILES['document']['name'];
-        $uploadDir = "../public/doc/bon_travaux/";
+        $uploadDir = "/var/www/html/proxiserve/public/doc/";
         $destination = $uploadDir . $fileName;
         
 
@@ -217,7 +217,7 @@ class TlController extends CoreController
 
         $name = $_FILES['document']['tmp_name'];
         $fileName = $_FILES['document']['name'];
-        $uploadDir = "../public/doc/bon_travaux/";
+        $uploadDir = "/var/www/html/proxiserve/public/doc/";
         $destination = $uploadDir . $fileName;
         move_uploaded_file($name, $destination);
 
