@@ -218,7 +218,7 @@ class VthController extends CoreController
 
         $name = $_FILES['document']['tmp_name'];
         $fileName = $_FILES['document']['name'];
-        $uploadDir = "/doc/";
+        $uploadDir = "doc/";
         $destination = $uploadDir . $fileName;
         
 
