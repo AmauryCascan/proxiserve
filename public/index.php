@@ -106,6 +106,15 @@ $router->map(
     ],
     'vth-filtreEtat'
 );
+$router->map(
+    'GET',
+    '/vth/filtre/rob/[*:rob]',
+    [
+        'method' => 'filtreRob',
+        'controller' => '\App\Controllers\VthController' 
+    ],
+    'vth-filtreRob'
+);
 
 
 //bon travaux vth

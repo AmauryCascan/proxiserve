@@ -91,6 +91,19 @@ class VthController extends CoreController
         
         $this->show('vth/filtre', ['bts' => $bts, 'types' =>$types, 'robs' =>$robs, 'secteurs' =>$secteurs, 'etats' => $etats, 'users' => $users]);
     }
+    public function filtreRob($params)
+    {      
+        $urldecode = urldecode($params);
+        $rob =  str_replace('+', ' ', $urldecode);
+        $bts = BT::findByRob($rob);
+        $types = Type::findAll();
+        $robs = Rob::findAll();
+        $secteurs = Secteur::findAll();
+        $etats = Etat::findAll();
+        $users = AppUser::findAll();
+        
+        $this->show('vth/filtre', ['bts' => $bts, 'types' =>$types, 'robs' =>$robs, 'secteurs' =>$secteurs, 'etats' => $etats, 'users' => $users]);
+    }
 
     public function listAnnule()
     {
@@ -292,7 +305,7 @@ class VthController extends CoreController
         $bt->setBt($bontravaux);
         $bt->setType($type);
         $bt->setSecteur($secteur);
-        $bt->setSecteur($rob);
+        $bt->setRob($rob);
         ($start !== "") ? $bt->setStart($start) : NULL;
         ($end !== "") ? $bt->setEnd($end) : NULL;
         ($person !== "") ? $bt->setPerson($person) : NULL;
@@ -344,7 +357,7 @@ class VthController extends CoreController
         $bt->setYears($years);
         $bt->setBt($bontravaux);
         $bt->setType($type);
-        $bt->setSecteur($rob);
+        $bt->setRob($rob);
         $bt->setSecteur($secteur);
         ($start !== "") ? $bt->setStart($start) : NULL;
         ($end !== "") ? $bt->setEnd($end) : NULL;

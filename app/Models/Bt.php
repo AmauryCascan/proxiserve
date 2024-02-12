@@ -275,6 +275,22 @@ class Bt extends CoreModel
         
          return $results;
     }
+    public static function findByRob($rob)
+    {
+         // récupérer un objet PDO = connexion à la BDD
+         $pdo = Database::getPDO();
+
+         // on écrit la requête SQL pour récupérer le produit
+         $sql = "
+             SELECT *
+             FROM `bt`
+             WHERE rob = '{$rob}' ";
+ 
+         $pdoStatement = $pdo->query($sql);
+         $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+         return $results;
+    }
 
     
 
