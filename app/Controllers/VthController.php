@@ -152,7 +152,7 @@ class VthController extends CoreController
     public function listRobinetterie()
     {
         
-        $bts = Bt:: findFacture();
+        $bts = Bt:: findRob();
         $etats = Etat::findAll();
         $robs = Rob::findAll();
         $types = Type::findAll();

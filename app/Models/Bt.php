@@ -67,6 +67,16 @@ class Bt extends CoreModel
         
         return $results;
     }
+    public static function findRob()
+    {
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM bt WHERE type = 'SANITAIRES' AND rob IS NOT NULL ORDER BY `id` DESC";
+        $pdoStatement = $pdo->query($sql);
+
+        $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        return $results;
+    }
 
 
     public static function find($id)

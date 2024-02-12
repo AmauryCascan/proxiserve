@@ -120,6 +120,7 @@
                                     </td>
                                     <td><?= (!empty($bt->getRdv())) ? (new DateTime($bt->getRdv()))->format('d/m/y') : "" ?></td>
                                     <td><?= $bt->getEtat(); ?></td>
+                                    <td><?= $bt->getRob(); ?></td>
                                     <td><?= $bt->getType(); ?></td>
                                     <td><?= $bt->getSecteur(); ?></td>
                                     <td><?= (!empty($bt->getStart())) ? (new DateTime($bt->getStart()))->format('d/m/y') : "" ?></td>
