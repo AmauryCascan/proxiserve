@@ -93,8 +93,7 @@
                 <?php endif; ?>
                     <tbody class="table-group-divider">
                     <?php foreach ($bts as $bt) : 
-                        foreach($users as $user) :
-                            if($bt->getPerson() === $user->getEmail() && $_SESSION["userObject"]->getRole() !== "manager" && $_SESSION["userObject"]->getRole() !== "admin") :?> 
+                            if($bt->getPerson() === $_SESSION["userObject"]->getEmail() && $_SESSION["userObject"]->getRole() !== "manager" && $_SESSION["userObject"]->getRole() !== "admin") :?> 
                                 <tr <?php if ($bt->getEtat() === "Facturé") { ?> 
                                         class="bg-success" 
                                     <?php }elseif($bt->getEtat() === "Annulé"){ ?>
@@ -126,7 +125,6 @@
                                     </td>
                                 </tr>
                             <?php endif;
-                        endforeach;
                     endforeach ?>
                 </tbody>                    
             </table> 
