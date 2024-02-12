@@ -4,6 +4,8 @@ RewriteEngine On
 # Condition de réécriture
 # => RewriteCond
 
+# Exclure le répertoire .well-known/acme-challenge des règles de redirection
+RewriteRule ^\.well-known/acme-challenge - [L]
 # Règle de réécriture (si la ou les conditions sont vraies)
 
 # dynamically setup base URI
