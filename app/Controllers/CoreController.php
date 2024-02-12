@@ -215,9 +215,9 @@ class CoreController
         // donc on la définit dans show()
         $viewData['currentPage'] = $viewName;
         // définir l'url absolue pour nos assets
-        $viewData['assetsBaseUri'] = 'http://proxiserve.amaurycascan-server.eddi.cloud/proxiserve/public/assets/';
-        $viewData['imagesBaseUri'] = 'http://proxiserve.amaurycascan-server.eddi.cloud/proxiserve/public/images/';
-        $viewData['pdfBaseUri'] = 'http://proxiserve.amaurycascan-server.eddi.cloud/proxiserve/public/doc/';
+        $viewData['assetsBaseUri'] = 'proxiserve/public/assets/';
+        $viewData['imagesBaseUri'] = 'proxiserve/public/images/';
+        $viewData['pdfBaseUri'] = 'proxiserve/public/doc/';
         
         // définir l'url absolue pour la racine du site
         // /!\ != racine projet, ici on parle du répertoire public/
