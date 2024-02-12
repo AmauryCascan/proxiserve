@@ -1,7 +1,9 @@
 const app = {
     init: function() {
-        this.formFiltreElement = document.querySelector('.filterForm');
-        this.formFiltreElement.addEventListener('submit', (event) => this.handleSubmitFilterElement(event));
+        if (window.location.href.includes("proxiserve/public/vth/encours/liste")) {
+            this.formFiltreElement = document.querySelector('.filterForm');
+            this.formFiltreElement.addEventListener('submit', (event) => this.handleSubmitFilterElement(event));
+        }
     },
     
     handleSubmitFilterElement: function(event) {
