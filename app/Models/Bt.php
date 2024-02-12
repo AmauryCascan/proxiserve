@@ -10,6 +10,7 @@ class Bt extends CoreModel
     private $years;
     private $bt;
     private $type;
+    private $rob;
     private $secteur;
     private $start;
     private $end;
@@ -554,6 +555,26 @@ class Bt extends CoreModel
     public function setCommande($commande)
     {
         $this->commande = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of rob
+     */ 
+    public function getRob()
+    {
+        return $this->rob;
+    }
+
+    /**
+     * Set the value of rob
+     *
+     * @return  self
+     */ 
+    public function setRob($rob)
+    {
+        $this->rob = $rob;
 
         return $this;
     }

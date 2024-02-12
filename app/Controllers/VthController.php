@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Bt;
+use App\Models\Rob;
 use App\Models\Etat;
 use App\Models\Type;
 use App\Models\AppUser;
@@ -124,17 +125,39 @@ class VthController extends CoreController
     
         $this->show('vth/facture', $data);
     }
+
+    public function listRobinetterie()
+    {
+        
+        $bts = Bt:: findFacture();
+        $etats = Etat::findAll();
+        $types = Type::findAll();
+        $secteurs = Secteur::findAll();
+        $users = AppUser::findAll();
+
+        $data = [
+            'bts' => $bts,
+            'etats' => $etats,
+            'types' => $types,
+            'secteurs' => $secteurs,
+            'users' => $users
+        ];
+    
+        $this->show('vth/robinetterie', $data);
+    }
     
     public function listInfo()
     {
         $etats = Etat::findAll();
         $types = Type::findAll();
         $secteurs = Secteur::findAll();
+        $robs = Rob::findAll();
 
         $data = [
             'etats' => $etats,
             'types' => $types,
             'secteurs' => $secteurs,
+            'robs' => $robs,
         ];
         
         $this->show('vth/infos', $data);

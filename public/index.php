@@ -203,6 +203,17 @@ $router->map(
     'annule-list'
 );
 
+//Annulé vth
+$router->map(
+    'GET',
+    '/vth/robinetterie/liste',
+    [
+        'method' => 'listRobinetterie',
+        'controller' => '\App\Controllers\VthController' 
+    ],
+    'robinetterie-list'
+);
+
 //tl
 $router->map(
     'GET',
@@ -403,6 +414,59 @@ $router->map(
         'controller' => '\App\Controllers\TypeController'
     ],
     'type-delete'
+);
+
+//rob
+
+$router->map(
+    'GET',
+    '/rob/add',
+    [
+        'method' => 'add',
+        'controller' => '\App\Controllers\RobController' 
+    ],
+    'rob-add'
+);
+
+$router->map(
+    'POST',
+    '/rob/add',
+    [
+        'method' => 'addPost',
+        'controller' => '\App\Controllers\RobController' 
+    ],
+    'rob-addPost'
+);
+
+$router->map(
+    'GET',
+    '/rob/update/[i:id]',
+    [
+        'method' => 'update',
+        'controller' => '\App\Controllers\RobController' 
+    ],
+    'rob-update'
+);
+
+$router->map(
+    'POST',
+    '/rob/update/[i:id]',
+    [
+        'method' => 'updatePost',
+        'controller' => '\App\Controllers\RobController' 
+    ],
+    'rob-updatepost'
+);
+
+
+$router->map(
+    'GET',
+    '/rob/delete/[i:id]',
+    [
+        'method' => 'delete',
+        'controller' => '\App\Controllers\RobController'
+    ],
+    'rob-delete'
 );
 
 //secteur

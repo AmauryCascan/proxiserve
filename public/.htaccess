@@ -19,18 +19,3 @@ RewriteCond %{REQUEST_FILENAME} !-f
 # redirect every request to index.php (AltoRouter)
 # voir : https://dannyvankooten.github.io/AltoRouter/usage/rewrite-requests.html
 RewriteRule . index.php [L]
-
-# le code précédent de O'shop
-# and give the relative URL in "page" GET param
-# RewriteRule ^(.*)$ index.php?page=/$1 [QSA,L]
-# par ex. /store => index.php?page=/store
-
-# see https://httpd.apache.org/docs/2.4/rewrite/flags.html#flag_l
-# see https://httpd.apache.org/docs/2.4/rewrite/flags.html#flag_qsa
-
-# ... sinon, on sert le/les fichiers existants
-
-# voir https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html :D
-
-# exemple de règle pour extraire un identifiant
-# RewriteRule ^\/category\/(.*)$ index.php?page=category&id=$1 [QSA,L]

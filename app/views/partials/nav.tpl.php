@@ -30,6 +30,8 @@
                                 href="<?= $this->router->generate('facture-list');?>">Facturé</a>
                             <a class="btn btn-sm btn-outline-dark <?= ($currentPage === "vth/annule") ? "active" : "" ?>" 
                                 href="<?= $this->router->generate('annule-list');?>">Annulé</a>
+                                <a class="btn btn-sm btn-outline-dark <?= ($currentPage === "vth/robinetterie") ? "active" : "" ?>" 
+                                href="<?= $this->router->generate('robinetterie-list');?>">Robinetterie</a>
                             <?php if($_SESSION['userObject']->getRole() === "manager" || $_SESSION['userObject']->getRole() === "admin") : ?>
                                 <a class="btn btn-sm btn-outline-dark <?= ($currentPage === "vthTravaux/add") ? "active" : "" ?>" 
                                     href="<?= $this->router->generate('vth-add');?>">Nouveau Bon</a>

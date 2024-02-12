@@ -1,5 +1,5 @@
 <div class="row mt-5">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-3">
                 <div class="card text-danger mb-3">
                     <div class="card-header bg-light">Liste des Types</div>
                     <div class="card-body">
@@ -32,7 +32,40 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-3">
+                <div class="card text-danger mb-3">
+                    <div class="card-header bg-light">Liste des Robs</div>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nom</th>
+                                    <th class="text-end" scope="col">Supprimer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach($robs as $rob) : ?>
+                                <tr>
+                                    <td><?= $rob->getName()?></td>
+                                    <td class="text-end">
+                                        <a href="<?= $this->router->generate('rob-update', ['id' => $rob->getId()]);?>" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="<?= $this->router->generate('rob-delete', ['id' => $rob->getId()]) . "?csrftoken=" . $token;?>" 
+                                            class="btn btn-sm btn-danger">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </td>
+                                </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                        <div class="d-grid gap-2">
+                            <a href="<?= $this->router->generate('rob-add');?>" class="btn btn-success">Ajouter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
                 <div class="card text-danger mb-3">
                     <div class="card-header bg-light">Liste des Secteurs</div>
                     <div class="card-body">
@@ -65,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-3">
                 <div class="card text-danger mb-3">
                     <div class="card-header bg-light">Liste des Etats</div>
                     <div class="card-body">
