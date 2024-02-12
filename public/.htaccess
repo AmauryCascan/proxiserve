@@ -16,6 +16,31 @@ RewriteRule ^(.*) - [E=BASE_URI:%1]
 RewriteCond %{REQUEST_FILENAME} !-d
 # ET si aucun fichier du nom demandé n'existe
 RewriteCond %{REQUEST_FILENAME} !-f
+# Exclure les fichiers statiques
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif)$ [NC]
+# redirect every request to index.php (AltoRouter)
+# voir : https://dannyvankooten.github.io/AltoRouter/usage/rewrite-requests.html
+RewriteRule . index.php [L]
+# on active le moteur de réécriture de Apache
+RewriteEngine On
+
+# Condition de réécriture
+# => RewriteCond
+
+# Règle de réécriture (si la ou les conditions sont vraies)
+
+# dynamically setup base URI
+RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+# retourne la valeur dans une variable d'environnement serveur
+# accessible en PHP via $_SERVER[];
+RewriteRule ^(.*) - [E=BASE_URI:%1]
+
+# si aucun dossier du nom demandé n'existe
+RewriteCond %{REQUEST_FILENAME} !-d
+# ET si aucun fichier du nom demandé n'existe
+RewriteCond %{REQUEST_FILENAME} !-f
+# Exclure les fichiers statiques
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif)$ [NC]
 # redirect every request to index.php (AltoRouter)
 # voir : https://dannyvankooten.github.io/AltoRouter/usage/rewrite-requests.html
 RewriteRule . index.php [L]
