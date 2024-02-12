@@ -22,6 +22,7 @@ class VthController extends CoreController
         $bts = Bt:: findNonFacture();
         $etats = Etat::findAll();
         $types = Type::findAll();
+        $robs = Rob::findAll();
         $secteurs = Secteur::findAll();
         $users = AppUser::findAll();
 
@@ -29,6 +30,7 @@ class VthController extends CoreController
             'bts' => $bts,
             'etats' => $etats,
             'types' => $types,
+            'robs' => $robs,
             'secteurs' => $secteurs,
             'users' => $users
         ];
@@ -41,11 +43,12 @@ class VthController extends CoreController
         
         $bts = BT::findByBt($bt);
         $types = Type::findAll();
+        $robs = Rob::findAll();
         $secteurs = Secteur::findAll();
         $etats = Etat::findAll();
         $users = AppUser::findAll();
         
-        $this->show('vth/filtre', ['bts' => $bts, 'types' =>$types, 'secteurs' =>$secteurs, 'etats' => $etats,'users' => $users]);
+        $this->show('vth/filtre', ['bts' => $bts, 'types' =>$types, 'robs' =>$robs, 'secteurs' =>$secteurs, 'etats' => $etats,'users' => $users]);
     }
 
     public function filtreType($params)
@@ -55,11 +58,12 @@ class VthController extends CoreController
 
         $bts = BT::findByType($type);
         $types = Type::findAll();
+        $robs = Rob::findAll();
         $secteurs = Secteur::findAll();
         $etats = Etat::findAll();
         $users = AppUser::findAll();
         
-        $this->show('vth/filtre', ['bts' => $bts, 'types' =>$types, 'secteurs' =>$secteurs, 'etats' => $etats, 'users' => $users]);
+        $this->show('vth/filtre', ['bts' => $bts, 'types' =>$types, 'robs' =>$robs, 'secteurs' =>$secteurs, 'etats' => $etats, 'users' => $users]);
     }
     public function filtreSecteur($params)
     {   
@@ -67,11 +71,12 @@ class VthController extends CoreController
         $secteur =  str_replace('+', ' ', $urldecode);
         $bts = BT::findBySecteur($secteur);
         $types = Type::findAll();
+        $robs = Rob::findAll();
         $secteurs = Secteur::findAll();
         $etats = Etat::findAll();
         $users = AppUser::findAll();
         
-        $this->show('vth/filtre', ['bts' => $bts, 'types' =>$types, 'secteurs' =>$secteurs, 'etats' => $etats, 'users' => $users]);
+        $this->show('vth/filtre', ['bts' => $bts, 'types' =>$types, 'robs' =>$robs, 'secteurs' =>$secteurs, 'etats' => $etats, 'users' => $users]);
     }
     public function filtreEtat($params)
     {      
@@ -79,11 +84,12 @@ class VthController extends CoreController
         $etat =  str_replace('+', ' ', $urldecode);
         $bts = BT::findByEtat($etat);
         $types = Type::findAll();
+        $robs = Rob::findAll();
         $secteurs = Secteur::findAll();
         $etats = Etat::findAll();
         $users = AppUser::findAll();
         
-        $this->show('vth/filtre', ['bts' => $bts, 'types' =>$types, 'secteurs' =>$secteurs, 'etats' => $etats, 'users' => $users]);
+        $this->show('vth/filtre', ['bts' => $bts, 'types' =>$types, 'robs' =>$robs, 'secteurs' =>$secteurs, 'etats' => $etats, 'users' => $users]);
     }
 
     public function listAnnule()
@@ -91,6 +97,7 @@ class VthController extends CoreController
         
         $bts = Bt:: findAnnule();
         $etats = Etat::findAll();
+        $robs = Rob::findAll();
         $types = Type::findAll();
         $secteurs = Secteur::findAll();
         $users = AppUser::findAll();
@@ -99,6 +106,7 @@ class VthController extends CoreController
             'bts' => $bts,
             'etats' => $etats,
             'types' => $types,
+            'robs' => $robs,
             'secteurs' => $secteurs,
             'users' => $users
         ];
@@ -111,6 +119,7 @@ class VthController extends CoreController
         
         $bts = Bt:: findFacture();
         $etats = Etat::findAll();
+        $robs = Rob::findAll();
         $types = Type::findAll();
         $secteurs = Secteur::findAll();
         $users = AppUser::findAll();
@@ -119,6 +128,7 @@ class VthController extends CoreController
             'bts' => $bts,
             'etats' => $etats,
             'types' => $types,
+            'robs' => $robs,
             'secteurs' => $secteurs,
             'users' => $users
         ];
@@ -131,6 +141,7 @@ class VthController extends CoreController
         
         $bts = Bt:: findFacture();
         $etats = Etat::findAll();
+        $robs = Rob::findAll();
         $types = Type::findAll();
         $secteurs = Secteur::findAll();
         $users = AppUser::findAll();
@@ -139,6 +150,7 @@ class VthController extends CoreController
             'bts' => $bts,
             'etats' => $etats,
             'types' => $types,
+            'robs' => $robs,
             'secteurs' => $secteurs,
             'users' => $users
         ];
@@ -156,8 +168,8 @@ class VthController extends CoreController
         $data = [
             'etats' => $etats,
             'types' => $types,
-            'secteurs' => $secteurs,
             'robs' => $robs,
+            'secteurs' => $secteurs,
         ];
         
         $this->show('vth/infos', $data);
@@ -193,12 +205,14 @@ class VthController extends CoreController
     {   
         $etats = Etat::findAll();
         $types = Type::findAll();
+        $robs = Rob::findAll();
         $secteurs = Secteur::findAll();
         $appUsers = AppUser::findAll();
         $bt = new Bt();
         $data = [
             'etats' => $etats,
             'types' => $types,
+            'robs' => $robs,
             'secteurs' => $secteurs,
             'bt' => $bt,
             'appUsers' => $appUsers,
@@ -217,12 +231,14 @@ class VthController extends CoreController
         
         $bt = Bt::find($id);
         $etats = Etat::findAll();
+        $robs = Rob::findAll();
         $types = Type::findAll();
         $secteurs = Secteur::findAll();
 
         $data = [
             'etats' => $etats,
             'types' => $types,
+            'robs' => $robs,
             'secteurs' => $secteurs,
             'bt' => $bt,
         ];
@@ -251,6 +267,7 @@ class VthController extends CoreController
         $bontravaux = filter_input(INPUT_POST, 'bt');
         $type = filter_input(INPUT_POST, 'type');
         $secteur = filter_input(INPUT_POST, 'secteur');
+        $rob = filter_input(INPUT_POST, 'rob');
         $start = filter_input(INPUT_POST, 'start');
         $end = filter_input(INPUT_POST, 'end');
         $person = filter_input(INPUT_POST, 'person');
@@ -260,7 +277,7 @@ class VthController extends CoreController
         $rdv = filter_input(INPUT_POST, 'rdv');
         $commande = filter_input(INPUT_POST, 'commande');
 
-        if(is_null($years) || is_null($bontravaux) || is_null($type) || is_null($secteur) || is_null($start) || is_null($end)
+        if(is_null($years) || is_null($bontravaux) || is_null($type) || is_null($rob) || is_null($secteur) || is_null($start) || is_null($end)
         || is_null($person) || is_null($etat) || is_null($document) || is_null($price) || is_null($rdv) || is_null($commande)) {
             header('HTTP/1.0 400 Bad');
             $this->show('error/err400');
@@ -275,6 +292,7 @@ class VthController extends CoreController
         $bt->setBt($bontravaux);
         $bt->setType($type);
         $bt->setSecteur($secteur);
+        $bt->setSecteur($rob);
         ($start !== "") ? $bt->setStart($start) : NULL;
         ($end !== "") ? $bt->setEnd($end) : NULL;
         ($person !== "") ? $bt->setPerson($person) : NULL;
@@ -303,6 +321,7 @@ class VthController extends CoreController
         $years = filter_input(INPUT_POST, 'years');
         $bontravaux = filter_input(INPUT_POST, 'bt');
         $type = filter_input(INPUT_POST, 'type');
+        $rob = filter_input(INPUT_POST, 'rob');
         $secteur = filter_input(INPUT_POST, 'secteur');
         $start = filter_input(INPUT_POST, 'start');
         $end = filter_input(INPUT_POST, 'end');
@@ -313,7 +332,7 @@ class VthController extends CoreController
         $rdv = filter_input(INPUT_POST, 'rdv');
         $commande = filter_input(INPUT_POST, 'commande');
 
-        if(is_null($years) || is_null($bontravaux) || is_null($type) || is_null($secteur) || is_null($start) || is_null($end)
+        if(is_null($years) || is_null($bontravaux) || is_null($type) || is_null($rob) || is_null($secteur) || is_null($start) || is_null($end)
         || is_null($person) || is_null($etat) || is_null($document) || is_null($price) || is_null($rdv) || is_null($commande)) {
             header('HTTP/1.0 400 Bad');
             $this->show('error/err400');
@@ -325,6 +344,7 @@ class VthController extends CoreController
         $bt->setYears($years);
         $bt->setBt($bontravaux);
         $bt->setType($type);
+        $bt->setSecteur($rob);
         $bt->setSecteur($secteur);
         ($start !== "") ? $bt->setStart($start) : NULL;
         ($end !== "") ? $bt->setEnd($end) : NULL;

@@ -99,8 +99,8 @@ class Bt extends CoreModel
         $pdo = Database::getPDO();
         
         // Ecriture de la requête INSERT INTO
-        $sql = "INSERT INTO `bt` (years, bt, type, secteur, start, end, person, etat, document, commentaire, price, rdv, commande)
-                VALUES (:years, :bt, :type, :secteur, :start, :end, :person, :etat, :document, :commentaire, :price, :rdv, :commande)
+        $sql = "INSERT INTO `bt` (years, bt, type, secteur, start, end, person, etat, document, commentaire, price, rdv, commande, rob)
+                VALUES (:years, :bt, :type, :secteur, :start, :end, :person, :etat, :document, :commentaire, :price, :rdv, :commande, :rob)
         ";
         
         $stmt = $pdo->prepare($sql);
@@ -118,6 +118,7 @@ class Bt extends CoreModel
         $stmt->bindParam(':price', $this->price);
         $stmt->bindParam(':rdv', $this->rdv);
         $stmt->bindParam(':commande', $this->commande);
+        $stmt->bindParam(':rob', $this->rob);
         
         $success = $stmt->execute();
         // Si au moins une ligne ajoutée
@@ -155,7 +156,8 @@ class Bt extends CoreModel
                 `commentaireVth` = :commentaireVth,
                 `price` = :price,
                 `rdv` = :rdv,
-                `commande` = :price
+                `commande` = :commande,
+                `rob` = :rob
             WHERE id = :id
         ";
         
@@ -175,6 +177,7 @@ class Bt extends CoreModel
         $stmt->bindParam(':price', $this->price);
         $stmt->bindParam(':rdv', $this->rdv);
         $stmt->bindParam(':commande', $this->commande);
+        $stmt->bindParam(':rob', $this->rob);
         $stmt->bindParam(':id', $this->id);
         
         $sucess = $stmt->execute();
