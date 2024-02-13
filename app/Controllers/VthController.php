@@ -421,9 +421,14 @@ class VthController extends CoreController
         $bt->update();
         
         
-        
-        header('Location: ' . $this->router->generate('vth-see', ['id' => $bt->getId()]));
-        
+        if ($bt->getEtat() === "Facturé" || $bt->getEtat() === "Terminé"){
+            header('Location: ' . $this->router->generate('facture-list'));
+        } else if ($bt->getEtat() ==="Annulé"){
+            header('Location: ' . $this->router->generate('annule-list'));
+        } else {
+            header('Location: ' . $this->router->generate('vth-list'));
+        }
+
         exit;
     }
 
