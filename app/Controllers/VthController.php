@@ -6,6 +6,7 @@ use App\Models\Bt;
 use App\Models\Rob;
 use App\Models\Etat;
 use App\Models\Type;
+use App\Models\Files;
 use App\Models\AppUser;
 use App\Models\Secteur;
 
@@ -198,12 +199,14 @@ class VthController extends CoreController
         $etats = Etat::findAll();
         $bt = Bt::find($id);
         $robs = Rob::findAll();
+        $files = Files::findByBt($id);
         
 
         $data = [
             'bt' => $bt,
             'etats' => $etats,
-            'robs' => $robs
+            'robs' => $robs,
+            'files' => $files,
         ];
         
     
@@ -375,12 +378,18 @@ class VthController extends CoreController
 
     public function seePost($id) {
         
+        $name = $_FILES['file']['tmp_name'];
+        $fileName = $_FILES['file']['name'];
+        $uploadDir = "/var/www/html/proxiserve/public/doc/";
+        $destination = $uploadDir . $fileName;
+        move_uploaded_file($name, $destination);
 
         $etat = filter_input(INPUT_POST, 'etat');
         $rdv = filter_input(INPUT_POST, 'rdv');
         $commentaire = filter_input(INPUT_POST, 'commentaire');
         $commentaireVth = filter_input(INPUT_POST, 'commentaireVth');
         $rob = filter_input(INPUT_POST, 'rob');
+        $file = $fileName;
 
      
         $bt = Bt::find($id);
@@ -398,12 +407,17 @@ class VthController extends CoreController
             $rdv = $bt->getRdv();
         }
 
+        $fileName = new Files();
+        
         $bt->setEtat($etat);
         $bt->setCommentaire($commentaire);
         $bt->setCommentaireVth($commentaireVth);
         ($rdv !== "") ? $bt->setRdv($rdv) : NULL;
         ($rob !== "") ? $bt->setRob($rob) : NULL;
-
+        ($file !== "") ? $fileName->setFileName($file) : NULL;
+        ($file !== "") ? $fileName->setId_bt($id) : NULL;
+        
+        $fileName->insert();
         $bt->update();
         
         

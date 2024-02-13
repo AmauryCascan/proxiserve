@@ -77,12 +77,16 @@
                         <h6>Commentaire VTH</h6>
                         <h6 class="text-primary"><?= $bt->getCommentaireVTH(); ?> </h6> 
                      </div>
-                    <form class="col-lg-8 m-2" action="" method="POST">
+                    <form class="col-lg-10 m-2" action="" method="POST" enctype="multipart/form-data">
                         <div class="row border border-4 rounded">
-                            <div class="mb-3">
+                            <div class="col-6 mb-3">
                                 <label for="rdv" class="fform-label fs-5">Dernier RDV</label>
                                 <input type="date" class="form-control text-success" id="rdv" name="rdv" value="<?= $bt->getRdv(); ?>">
-                            </div>   
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label for="file" class="form-label fs-5">Bon d'Intervention</label>
+                             <input type="file" class="form-control text-success" id="file" name="file">
+                             </div>   
                             <div class="col ">
                                 <label for="etat" class="form-label fs-5">Etat :</label>
                                 <select class="form-select mb-3 text-success" aria-label="Default select example" id="etat" name="etat">
@@ -142,10 +146,12 @@
         <div class="col-12 col-lg-5">
             <div class="p-2 ">
                 <?php if ($bt->getDocument() === null ) { ?>
-                    <h6>Aucun document importé</h6>
-                <?php }else{ ?>
+                        <h6>Pas de Bt importé</h6>
+                    <?php }else{ ?>
                     <embed src=" <?= $viewData['pdfBaseUri'] . $bt->getDocument()?>"  type="application/pdf" width="100%" height="650px">
-                <?php } ?>
+                <?php } foreach ($files as $file) : ?>
+                    <embed src=" <?= $viewData['pdfBaseUri'] . $file->getFileName()?>"  type="application/pdf" width="100%" height="650px">
+                <?php endforeach ?>
             </div>
         </div>
     </div>
