@@ -305,7 +305,7 @@ class VthController extends CoreController
         $bt->setBt($bontravaux);
         $bt->setType($type);
         $bt->setSecteur($secteur);
-        $bt->setRob($rob);
+        ($rob !== "") ? $bt->setRob($rob) : NULL;
         ($start !== "") ? $bt->setStart($start) : NULL;
         ($end !== "") ? $bt->setEnd($end) : NULL;
         ($person !== "") ? $bt->setPerson($person) : NULL;
@@ -357,7 +357,7 @@ class VthController extends CoreController
         $bt->setYears($years);
         $bt->setBt($bontravaux);
         $bt->setType($type);
-        $bt->setRob($rob);
+        ($rob !== "") ? $bt->setRob($rob) : NULL;
         $bt->setSecteur($secteur);
         ($start !== "") ? $bt->setStart($start) : NULL;
         ($end !== "") ? $bt->setEnd($end) : NULL;
