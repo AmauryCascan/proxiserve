@@ -162,7 +162,7 @@
         <div class="text-center mt-3">
             <button type="button" class="btn btn-primary" onclick="showBtEmbed()">Voir Bt</button>
             <?php foreach ($files as $index => $file) : ?>
-                <button type="button" class="btn btn-primary" onclick="showFileEmbed(<?= $index ?>)">Voir Fichier <?= $index + 1 ?></button>
+                <button type="button" class="btn btn-primary m-1" onclick="showFileEmbed(<?= $index ?>)">Voir Fichier <?= $index + 1 ?></button>
             <?php endforeach ?>
         </div>
     </div>
