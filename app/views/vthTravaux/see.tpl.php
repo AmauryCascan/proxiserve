@@ -144,16 +144,46 @@
         </div>
         <!-- Partie droite (PDF) -->
         <div class="col-12 col-lg-5">
-            <div class="p-2 ">
-                <?php if ($bt->getDocument() === null ) { ?>
-                        <h6>Pas de Bt importé</h6>
-                    <?php }else{ ?>
-                    <embed src=" <?= $viewData['pdfBaseUri'] . $bt->getDocument()?>"  type="application/pdf" width="100%" height="650px">
-                <?php } foreach ($files as $file) : ?>
-                    <embed src=" <?= $viewData['pdfBaseUri'] . $file->getFileName()?>"  type="application/pdf" width="100%" height="650px">
-                <?php endforeach ?>
+    <div class="p-2">
+        <?php if ($bt->getDocument() === null) : ?>
+            <h6>Pas de Bt importé</h6>
+        <?php else : ?>
+            <div id="btEmbed" class="pdf-embed">
+                <embed src="<?= $viewData['pdfBaseUri'] . $bt->getDocument() ?>" type="application/pdf" width="100%" height="650px">
             </div>
+        <?php endif ?>
+
+        <?php foreach ($files as $index => $file) : ?>
+            <div id="fileEmbed<?= $index ?>" class="pdf-embed" style="display: none;">
+                <embed src="<?= $viewData['pdfBaseUri'] . $file->getFileName() ?>" type="application/pdf" width="100%" height="650px">
+            </div>
+        <?php endforeach ?>
+
+        <div class="text-center mt-3">
+            <button onclick="showBtEmbed()">Voir Bt</button>
+            <?php foreach ($files as $index => $file) : ?>
+                <button onclick="showFileEmbed(<?= $index ?>)">Voir BI <?= $index + 1 ?></button>
+            <?php endforeach ?>
         </div>
+    </div>
+</div>
+
+<script>
+    function showBtEmbed() {
+        document.getElementById("btEmbed").style.display = "block";
+        <?php foreach ($files as $index => $file) : ?>
+            document.getElementById("fileEmbed<?= $index ?>").style.display = "none";
+        <?php endforeach ?>
+    }
+
+    function showFileEmbed(index) {
+        <?php foreach ($files as $index => $file) : ?>
+            document.getElementById("fileEmbed<?= $index ?>").style.display = "none";
+        <?php endforeach ?>
+        document.getElementById("btEmbed").style.display = "none";
+        document.getElementById("fileEmbed" + index).style.display = "block";
+    }
+</script>
     </div>
 </div>
 
