@@ -24,7 +24,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="status" class="form-label">Status</label>
+            <label for="status" class="form-label">Statut</label>
             <select class="form-select" name="status" id="status">
                 <option value="0" <?= ($user->getStatus() == 0) ? 'selected' : '' ?>>-</option>
                 <option value="1" <?= ($user->getStatus() == 1) ? 'selected' : '' ?>>actif</option>

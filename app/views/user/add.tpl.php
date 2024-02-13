@@ -29,7 +29,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="status" class="form-label">Status</label>
+            <label for="status" class="form-label">Statut</label>
             <select class="form-select" name="status" id="status">
                 <option value="0">-</option>
                 <option value="1">actif</option>

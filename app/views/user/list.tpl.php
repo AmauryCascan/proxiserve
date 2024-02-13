@@ -8,7 +8,7 @@
                     <th scope="col">Prénom</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Rôle</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Statut</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
