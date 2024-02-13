@@ -282,7 +282,6 @@ class VthController extends CoreController
         $bontravaux = filter_input(INPUT_POST, 'bt');
         $type = filter_input(INPUT_POST, 'type');
         $secteur = filter_input(INPUT_POST, 'secteur');
-        $rob = filter_input(INPUT_POST, 'rob');
         $start = filter_input(INPUT_POST, 'start');
         $end = filter_input(INPUT_POST, 'end');
         $person = filter_input(INPUT_POST, 'person');
@@ -292,7 +291,7 @@ class VthController extends CoreController
         $rdv = filter_input(INPUT_POST, 'rdv');
         $commande = filter_input(INPUT_POST, 'commande');
 
-        if(is_null($years) || is_null($bontravaux) || is_null($type) || is_null($rob) || is_null($secteur) || is_null($start) || is_null($end)
+        if(is_null($years) || is_null($bontravaux) || is_null($type) || is_null($secteur) || is_null($start) || is_null($end)
         || is_null($person) || is_null($etat) || is_null($document) || is_null($price) || is_null($rdv) || is_null($commande)) {
             header('HTTP/1.0 400 Bad');
             $this->show('error/err400');
@@ -307,7 +306,6 @@ class VthController extends CoreController
         $bt->setBt($bontravaux);
         $bt->setType($type);
         $bt->setSecteur($secteur);
-        ($rob !== "") ? $bt->setRob($rob) : NULL;
         ($start !== "") ? $bt->setStart($start) : NULL;
         ($end !== "") ? $bt->setEnd($end) : NULL;
         ($person !== "") ? $bt->setPerson($person) : NULL;
@@ -336,7 +334,6 @@ class VthController extends CoreController
         $years = filter_input(INPUT_POST, 'years');
         $bontravaux = filter_input(INPUT_POST, 'bt');
         $type = filter_input(INPUT_POST, 'type');
-        $rob = filter_input(INPUT_POST, 'rob');
         $secteur = filter_input(INPUT_POST, 'secteur');
         $start = filter_input(INPUT_POST, 'start');
         $end = filter_input(INPUT_POST, 'end');
@@ -347,7 +344,7 @@ class VthController extends CoreController
         $rdv = filter_input(INPUT_POST, 'rdv');
         $commande = filter_input(INPUT_POST, 'commande');
 
-        if(is_null($years) || is_null($bontravaux) || is_null($type) || is_null($rob) || is_null($secteur) || is_null($start) || is_null($end)
+        if(is_null($years) || is_null($bontravaux) || is_null($type) || is_null($secteur) || is_null($start) || is_null($end)
         || is_null($person) || is_null($etat) || is_null($document) || is_null($price) || is_null($rdv) || is_null($commande)) {
             header('HTTP/1.0 400 Bad');
             $this->show('error/err400');
@@ -359,7 +356,6 @@ class VthController extends CoreController
         $bt->setYears($years);
         $bt->setBt($bontravaux);
         $bt->setType($type);
-        ($rob !== "") ? $bt->setRob($rob) : NULL;
         $bt->setSecteur($secteur);
         ($start !== "") ? $bt->setStart($start) : NULL;
         ($end !== "") ? $bt->setEnd($end) : NULL;
