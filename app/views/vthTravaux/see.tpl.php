@@ -94,6 +94,19 @@
                                     endforeach;?>
                                 </select>
                             </div>
+                            <?php if ($bt->getType() === "SANITAIRES") : ?>
+                            <div class="col ">
+                                <label for="rob" class="form-label fs-5">Rob :</label>
+                                <select class="form-select mb-3 text-success" aria-label="Default select example" id="rob" name="rob">
+                                    <option class="text-success" value="<?= $bt->getRob(); ?>"><?= $bt->getRob(); ?></option>
+                                    <?php foreach ($robs as $rob) : 
+                                        if($bt->getRob() !== $rob->getName()) :?>
+                                            <option  class="text-success" value="<?= $rob->getName(); ?>"><?= $rob->getName(); ?></option>
+                                        <?php endif;
+                                    endforeach;?>
+                                </select>
+                            </div>
+                            <?php endif; ?>
                             <div class="col ">
                                 <label for="commentaire" class="form-label fs-5">Commentaire :</label>
                                 <input type="text" class="form-control text-success" id="commentaire" name="commentaire" value="<?= $bt->getCommentaire(); ?>"></input>

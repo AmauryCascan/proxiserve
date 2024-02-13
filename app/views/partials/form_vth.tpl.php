@@ -17,7 +17,7 @@
                             <label for="commande" class="form-label">N° de commande</label>
                             <input type="number" class="form-control text-primary" id="commande" name="commande" value="<?= $bt->getCommande(); ?>">
                         </div>
-                        <div class="mb-3 col-3">
+                        <div class="mb-3 col-4">
                             <label for="etat" class="form-label">Etat</label>                          
                             <select class="form-select text-primary" aria-label="Default select example" id="etat" name="etat">
                                 <?php if($_SERVER['REQUEST_URI'] === "/vth/add") { ?>
@@ -35,25 +35,7 @@
                                     } ?>
                             </select>
                         </div>
-                        <div class="mb-3 col-3">
-                            <label for="rob" class="form-label">Rob</label>                          
-                            <select class="form-select text-primary" aria-label="Default select example" id="rob" name="rob">
-                                <?php if($_SERVER['REQUEST_URI'] === "/vth/add") { ?>
-                                    <option value=""></option>
-                                <?php foreach ($robs as $rob) : ?>
-                                    <option value="<?= $rob->getName(); ?>"><?= $rob->getName(); ?></option>
-                                    <?php endforeach; 
-                                    } else { ?>
-                                        <option value="<?= $bt->getRob(); ?>"><?= $bt->getRob(); ?></option>
-                                        <?php foreach ($robs as $rob) : 
-                                            if($bt->getRob() !== $rob->getName()) :?>
-                                                <option value="<?= $rob->getName(); ?>"><?= $rob->getName(); ?></option>
-                                            <?php endif;
-                                            endforeach;
-                                    } ?>
-                            </select>
-                        </div>
-                        <div class="mb-3 col-3">
+                        <div class="mb-3 col-4">
                             <label for="type" class="form-label">Type</label>
                             <select class="form-select text-primary" aria-label="Default select example" id="type" name="type">
                                 <?php if($_SERVER['REQUEST_URI'] === "/vth/add") { ?>
@@ -71,7 +53,7 @@
                                     } ?>
                             </select>
                         </div>
-                        <div class="mb-3 col-3">
+                        <div class="mb-3 col-4">
                             <label for="secteur" class="form-label">Secteur</label>
                             <select class="form-select text-primary" aria-label="Default select example" id="secteur" name="secteur">
                                 <?php if($_SERVER['REQUEST_URI'] === "/vth/add") { ?>

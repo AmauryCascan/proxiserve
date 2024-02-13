@@ -197,11 +197,13 @@ class VthController extends CoreController
     {
         $etats = Etat::findAll();
         $bt = Bt::find($id);
+        $robs = Rob::findAll();
         
 
         $data = [
             'bt' => $bt,
             'etats' => $etats,
+            'robs' => $robs
         ];
         
     
@@ -382,6 +384,7 @@ class VthController extends CoreController
         $rdv = filter_input(INPUT_POST, 'rdv');
         $commentaire = filter_input(INPUT_POST, 'commentaire');
         $commentaireVth = filter_input(INPUT_POST, 'commentaireVth');
+        $rob = filter_input(INPUT_POST, 'rob');
 
      
         $bt = Bt::find($id);
@@ -403,6 +406,7 @@ class VthController extends CoreController
         $bt->setCommentaire($commentaire);
         $bt->setCommentaireVth($commentaireVth);
         ($rdv !== "") ? $bt->setRdv($rdv) : NULL;
+        ($rob !== "") ? $bt->setRob($rob) : NULL;
 
         $bt->update();
         
