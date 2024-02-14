@@ -421,13 +421,9 @@ class VthController extends CoreController
         $bt->update();
         
         
-        if ($bt->getEtat() === "Facturé" || $bt->getEtat() === "Terminé"){
-            header('Location: ' . $this->router->generate('facture-list'));
-        } else if ($bt->getEtat() ==="Annulé"){
-            header('Location: ' . $this->router->generate('annule-list'));
-        } else {
-            header('Location: ' . $this->router->generate('vth-list'));
-        }
+        
+        header('Location: ' . $this->router->generate('vth-see', ['id' => $bt->getId()]));
+    
 
         exit;
     }
@@ -437,8 +433,20 @@ class VthController extends CoreController
         
         
         $bt = Bt::find($id);
-
+        $files = Files::findByBt($id);
         
+        foreach($files as $file){
+            $filePath = "/var/www/html/proxiserve/public/doc/" . $file->getFileName();    
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
+        $filePath = "/var/www/html/proxiserve/public/doc/" . $bt->getDocument();    
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        
+
         $bt->delete();
         
         // $_SERVER["HTTP_REFERER"] redirige vers la page d'ou est lancée la requete
