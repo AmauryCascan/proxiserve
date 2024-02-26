@@ -377,22 +377,32 @@ class VthController extends CoreController
     }
 
     public function seePost($id) {
-        
-        $name = $_FILES['file']['tmp_name'];
-        $fileName = $_FILES['file']['name'];
-        $uploadDir = "/var/www/html/proxiserve/public/doc/";
-        $destination = $uploadDir . $fileName;
-        move_uploaded_file($name, $destination);
+
+        $bt = Bt::find($id);
+        $fileName = new Files();
+
+        if(isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK && $_FILES['file']['size'] > 0) {
+            $name = $_FILES['file']['tmp_name'];
+            $file= $_FILES['file']['name'];
+            $uploadDir = "/var/www/html/proxiserve/public/doc/";
+            $destination = $uploadDir . $file;
+            move_uploaded_file($name, $destination);
+            
+            
+            ($file !== "") ? $fileName->setFileName($file) : NULL;
+            ($file !== "") ? $fileName->setId_bt($id) : NULL;
+            
+            $fileName->insert();
+            
+        }
 
         $etat = filter_input(INPUT_POST, 'etat');
         $rdv = filter_input(INPUT_POST, 'rdv');
         $commentaire = filter_input(INPUT_POST, 'commentaire');
         $commentaireVth = filter_input(INPUT_POST, 'commentaireVth');
         $rob = filter_input(INPUT_POST, 'rob');
-        $file = $fileName;
 
      
-        $bt = Bt::find($id);
 
         if(is_null($etat)){
             $etat = $bt->getEtat();
@@ -407,17 +417,13 @@ class VthController extends CoreController
             $rdv = $bt->getRdv();
         }
 
-        $fileName = new Files();
+        
         
         $bt->setEtat($etat);
         $bt->setCommentaire($commentaire);
         $bt->setCommentaireVth($commentaireVth);
         ($rdv !== "") ? $bt->setRdv($rdv) : NULL;
         ($rob !== "") ? $bt->setRob($rob) : NULL;
-        ($file !== "") ? $fileName->setFileName($file) : NULL;
-        ($file !== "") ? $fileName->setId_bt($id) : NULL;
-        
-        $fileName->insert();
         $bt->update();
         
         
